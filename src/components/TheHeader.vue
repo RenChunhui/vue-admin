@@ -1,0 +1,3 @@
+<template>
+  <header></header>
+</template>
