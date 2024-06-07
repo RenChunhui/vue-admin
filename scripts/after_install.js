@@ -29,7 +29,9 @@ exec(`${command} code`, (error) => {
     "dbaeumer.vscode-eslint"
   ]
 }`,
-        () => {}
+        () => {
+          console.log('✔ extensions.json')
+        }
       );
       fs.writeFileSync(
         `${process.cwd()}/.vscode/settings.json`,
@@ -39,8 +41,30 @@ exec(`${command} code`, (error) => {
     "source.fixAll.eslint": "always"
   }
 }`,
-        () => {}
+        () => {
+          console.log('✔ settings.json')
+        }
       );
+
+      const extensions = [
+        { id: 'Vue.volar', name: 'Vue Language Server Protocol' },
+        { id: 'EditorConfig.EditorConfig', name: 'EditorConfig' },
+        { id: 'bradlc.vscode-tailwindcss', name: 'Tailwindcss Language Server Protocol' },
+        { id: 'dbaeumer.vscode-eslint', name: 'ESLint' },
+      ]
+
+      const installed = Buffer.from(execSync('code --list-extensions'),'utf-8').toString().split(/[\s\n]/)
+
+      for (const extension of extensions) {
+        if(installed.indexOf(extension.id) === -1) {
+          execSync(`code --install-extension ${extension.id}`)
+          console.log(`✔ 成功安装 ${extension.desc}`)
+        } else {
+          console.log(`✔ ${extension.desc}`)
+        }
+      }
+
+      console.log('✔ 完成插件安装')
     }
   });
 });

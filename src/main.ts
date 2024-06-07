@@ -1,20 +1,20 @@
-import "@/styles/main.css";
+import '@/styles/main.css'
 
-import { createApp } from "vue";
-import { createPinia } from "pinia";
+import { createApp } from 'vue'
+import { createPinia } from 'pinia'
 
-import App from "./App.vue";
-import router from "./router";
-import { setupMocks } from "./mocks";
+import App from './App.vue'
+import router from './router'
+import { setupMocks } from './mocks'
 
 async function bootstrap() {
-  const app = createApp(App);
-  app.use(createPinia());
-  app.use(router);
+  const app = createApp(App)
+  app.use(createPinia())
+  app.use(router)
 
-  await setupMocks();
+  await setupMocks()
 
-  app.mount("#app");
+  app.mount('#app')
 }
 
-bootstrap();
+bootstrap()
