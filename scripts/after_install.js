@@ -2,7 +2,7 @@
 
 import fs from "fs";
 import path from "path";
-import { exec } from "child_process";
+import { exec,execSync } from "child_process";
 import { platform } from "os";
 
 // 创建本地 .env.local
@@ -58,9 +58,9 @@ exec(`${command} code`, (error) => {
       for (const extension of extensions) {
         if(installed.indexOf(extension.id) === -1) {
           execSync(`code --install-extension ${extension.id}`)
-          console.log(`✔ 成功安装 ${extension.desc}`)
+          console.log(`✔ 成功安装 ${extension.name}`)
         } else {
-          console.log(`✔ ${extension.desc}`)
+          console.log(`✔ ${extension.name}`)
         }
       }
 

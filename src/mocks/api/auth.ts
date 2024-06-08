@@ -4,7 +4,7 @@ import { db } from '../db'
 export const authHandlers = [
   http.post('/api/auth/login', async ({ request }) => {
     const body = await request.json()
-    const user = db.user.findFirst({ where: { username: { equals: body.username } }})
+    const user = db.user.findFirst({ where: { username: { equals: body?.username } }})
 
     if(!user) {
       // NotFoundException
