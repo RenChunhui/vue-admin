@@ -10,7 +10,8 @@
     "build-only": "vite build",
     "type-check": "vue-tsc --build --force",
     "lint": "eslint . --ext .vue,.ts --fix --ignore-path .gitignore",
-    "install": "node scripts/after_install.js"
+    "install": "node scripts/after_install.js",
+    "prepare": "husky"
   },
   "msw": {
     "workerDirectory": [
@@ -37,6 +38,7 @@
     "autoprefixer": "^10.4.19",
     "eslint": "^8.57.0",
     "eslint-plugin-vue": "^9.23.0",
+    "husky": "^9.0.11",
     "npm-run-all2": "^6.1.2",
     "postcss": "^8.4.38",
     "tailwindcss": "^3.4.4",
