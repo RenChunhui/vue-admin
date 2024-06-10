@@ -1,9 +1,8 @@
-import { faker } from '@faker-js/faker'
-import { primaryKey } from '@mswjs/data'
+import { nullable, primaryKey } from '@mswjs/data'
 
 export const menuModel = {
-  id: primaryKey(() => faker.database.mongodbObjectId()),
-  printId: String,
+  id: primaryKey(Number),
+  parentId: nullable(Number),
   code: String,
   label: String
 }

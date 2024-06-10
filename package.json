@@ -21,9 +21,11 @@
   "dependencies": {
     "@mswjs/data": "^0.16.1",
     "@vueuse/core": "^10.10.0",
+    "@vueuse/integrations": "^10.10.0",
     "element-plus": "^2.7.4",
     "msw": "^2.3.1",
     "pinia": "^2.1.7",
+    "universal-cookie": "^7.1.4",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0"
   },
