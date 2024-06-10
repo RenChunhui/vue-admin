@@ -12,9 +12,9 @@ export const db = factory({
 
 // 初使化用户数据
 function bootstrapUsers() {
-  db.user.create({ username: 'admin', password: 'admin' })
+  db.user.create({ id: 1, username: 'admin', password: 'admin' })
   for (let i = 0; i < 100; i++) {
-    db.user.create()
+    db.user.create({ id: i+2 })
   }
 }
 
