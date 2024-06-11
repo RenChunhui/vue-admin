@@ -4,6 +4,10 @@ import { ElConfigProvider } from 'element-plus'
 
 <template>
   <ElConfigProvider>
-    <RouterView />
+    <RouterView v-slot="{ Component }">
+      <Transition>
+        <component :is="Component" />
+      </Transition>
+    </RouterView>
   </ElConfigProvider>
 </template>
