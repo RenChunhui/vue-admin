@@ -1,25 +1,34 @@
 <script setup lang="ts">
-const router = useRouter()
-const { data, execute } = useHttp('/api/menus').get().json()
+import { coverListToTree } from '@/utils/array'
 
-onMounted(async () => {
+const menus = ref<any[]>([])
+
+const { data, execute } = useHttp('/api/user/menus').get().json()
+
+onMounted(async() => {
   await execute()
+  menus.value = coverListToTree(data.value)
 })
-
-function handleSelect(key:string) {
-  router.push({ name: key})
-}
 </script>
 
 <template>
-  <aside class="fixed top-0 bottom-0 left-0 w-64">
-    <ElMenu @select="handleSelect">
+  <ElMenu router>
+    <ElSubMenu
+      v-for="menu in menus"
+      :key="menu.id"
+      :index="menu.id.toString()">
+      <template #title>
+        <span>{{ menu.name }}</span>
+      </template>
       <ElMenuItem
-        v-for="menu in data"
-        :key="menu.id"
-        :index="menu.code">
-        {{ menu.label }}
+        v-for="submenu in menu.children"
+        :key="submenu.id"
+        :route="{ name: submenu.code }"
+        :index="submenu.id.toString()">
+        <template #title>
+          <span>{{ submenu.name }}</span>
+        </template>
       </ElMenuItem>
-    </ElMenu>
-  </aside>
+    </ElSubMenu>
+  </ElMenu>
 </template>

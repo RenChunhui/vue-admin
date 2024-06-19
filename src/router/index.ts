@@ -1,8 +1,37 @@
-import { createRouter, createWebHistory, type NavigationGuardNext, type RouteLocationNormalized } from 'vue-router'
+import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
 import type { App } from 'vue'
-import { useCookies } from '@vueuse/integrations'
-import { ACCESS_TOKEN, HOME_NAME, LOGIN_NAME, WHITE_LIST } from '@/constants'
-import { constantRoutes } from './modules/constant'
+import BaseLayout from '@/layouts/BaseLayout.vue'
+
+const constantRoutes: Array<RouteRecordRaw> = [
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import('@/views/login/index.vue'),
+  },
+  {
+    path: '',
+    name: 'root',
+    redirect: '/home',
+    component: BaseLayout,
+    children: [
+      {
+        path: '/home',
+        name: 'home',
+        component: () => import('@/views/home/index.vue')
+      },
+      {
+        path: '/users',
+        name: 'users',
+        component: () => import('@/views/rbac/users/index.vue')
+      },
+      {
+        path: '/roles',
+        name: 'roles',
+        component: () => import('@/views/rbac/roles/index.vue')
+      }
+    ]
+  }
+]
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -11,30 +40,6 @@ const router = createRouter({
   ]
 })
 
-export default router
-
-export function setupRouter(app: App) {
+export function setupRouter(app:App) {
   app.use(router)
-
-  router.beforeEach(async (to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext) => {
-    const { get } = useCookies()
-
-    if (get(ACCESS_TOKEN)) {
-      if (to.name === LOGIN_NAME) {
-        next({ name: HOME_NAME })
-      } else {
-        next()
-      }
-    } else {
-      if (WHITE_LIST.includes(to.name)) {
-        next()
-      } else {
-        to.name === LOGIN_NAME ? next() : next({ name: LOGIN_NAME })
-      }
-    }
-  })
-
-  router.afterEach(() => { })
-
-  router.onError((error: Error) => { })
 }

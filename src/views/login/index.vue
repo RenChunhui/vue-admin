@@ -5,9 +5,9 @@ const payload = reactive({
   password: ''
 })
 
-const { execute, statusCode } = useHttp('/api/auth/login').post(payload).json()
+const { execute, isFetching, statusCode } = useHttp('/api/auth/login').post(payload).json()
 
-watch(statusCode,(val:number) => {
+watch(statusCode,(val) => {
   if(val === 200) {
     router.push({ name: 'home' })
   }
@@ -15,7 +15,6 @@ watch(statusCode,(val:number) => {
 </script>
 
 <template>
-
   <ElForm
     :model="payload"
     label-width="auto"
@@ -39,10 +38,10 @@ watch(statusCode,(val:number) => {
       <ElButton
         type="primary"
         class="w-full"
+        :loading="isFetching"
         @click="execute()">
         登录
       </ElButton>
     </ElFormItem>
   </ElForm>
-  <span>{{ statusCode }}</span>
 </template>

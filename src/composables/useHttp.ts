@@ -10,6 +10,10 @@ export const useHttp = createFetch({
       return ctx
     },
     onFetchError(ctx) {
+      if(ctx.data?.message) {
+        ElMessage.error(ctx.data.message)
+      }
+
       return ctx
     },
   },

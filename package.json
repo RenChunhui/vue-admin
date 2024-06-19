@@ -9,28 +9,20 @@
     "preview": "vite preview",
     "build-only": "vite build",
     "type-check": "vue-tsc --build --force",
-    "lint": "eslint . --ext .vue,.ts --fix --ignore-path .gitignore",
+    "lint": "eslint . --ext .vue,.js,,.cjs,.mjs,.ts --fix --ignore-path .gitignore",
     "install": "node scripts/after_install.js",
     "prepare": "husky"
   },
-  "msw": {
-    "workerDirectory": [
-      "public"
-    ]
-  },
   "dependencies": {
-    "@mswjs/data": "^0.16.1",
-    "@vueuse/core": "^10.10.0",
-    "@vueuse/integrations": "^10.10.0",
-    "element-plus": "^2.7.4",
-    "msw": "^2.3.1",
+    "@vueuse/core": "^10.11.0",
+    "element-plus": "^2.7.5",
     "pinia": "^2.1.7",
-    "universal-cookie": "^7.1.4",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0"
   },
   "devDependencies": {
     "@faker-js/faker": "^8.4.1",
+    "@mswjs/data": "^0.16.1",
     "@rushstack/eslint-patch": "^1.8.0",
     "@tsconfig/node20": "^20.1.4",
     "@types/node": "^20.12.5",
@@ -41,6 +33,7 @@
     "eslint": "^8.57.0",
     "eslint-plugin-vue": "^9.23.0",
     "husky": "^9.0.11",
+    "msw": "^2.3.1",
     "npm-run-all2": "^6.1.2",
     "postcss": "^8.4.38",
     "tailwindcss": "^3.4.4",
@@ -48,7 +41,11 @@
     "unplugin-auto-import": "^0.17.6",
     "unplugin-vue-components": "^0.27.0",
     "vite": "^5.2.8",
-    "vite-plugin-vue-devtools": "^7.0.25",
     "vue-tsc": "^2.0.11"
+  },
+  "msw": {
+    "workerDirectory": [
+      "public"
+    ]
   }
 }

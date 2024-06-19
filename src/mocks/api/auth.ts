@@ -7,7 +7,7 @@ type LoginResponseBody = {
 }
 
 export const authHandlers = [
-  http.post<LoginResponseBody>('/api/auth/login', async ({ request }) => {
+  http.post<LoginResponseBody>('/api/auth/login', async({ request}) => {
     const payload: any = await request.json()
     const user = db.user.findFirst({ where: { username: { equals: payload.username } } })
 

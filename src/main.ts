@@ -1,17 +1,18 @@
 import '@/styles/main.css'
 
 import { createApp } from 'vue'
-import { createPinia } from 'pinia'
 
 import App from './App.vue'
-import router from './router'
+import { setupRouter } from './router'
 import { setupMocks } from './mocks'
 
 async function bootstrap() {
   const app = createApp(App)
-  app.use(createPinia())
-  app.use(router)
 
+  // 挂载路由
+  setupRouter(app)
+
+  // 模拟数据
   await setupMocks()
 
   app.mount('#app')
