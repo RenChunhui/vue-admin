@@ -19,7 +19,7 @@ coverage
 
 # Editor directories and files
 .vscode/
-.idea/
+.idea
 *.suo
 *.ntvs*
 *.njsproj
@@ -28,10 +28,6 @@ coverage
 
 *.tsbuildinfo
 
-types/*
-!types/env.d.ts
-
-# lock
 package-lock.json
 pnpm-lock.yaml
 yarn.lock

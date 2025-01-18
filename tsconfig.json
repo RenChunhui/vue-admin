@@ -1,11 +1,13 @@
 {
-  "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
-    "composite": true,
-    "baseUrl": ".",
+    "noEmit": true,
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "resolveJsonModule": true,
+    "allowImportingTsExtensions": true,
+    "moduleDetection": "force",
+    "jsx": "preserve",
+    "jsxImportSource": "vue",
     "noImplicitThis": true,
     "strict": true,
     "verbatimModuleSyntax": true,
@@ -14,29 +16,18 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
-    "paths": {
-      "@/*": [
-        "./src/*"
-      ]
-    },
     "lib": [
       "ES2020",
       "DOM",
       "DOM.Iterable"
     ],
-    "types": [
-      "node",
-      "vite/client",
-      "element-plus/global"
-    ]
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
   "include": [
+    "types",
     "src/**/*",
-    "src/**/*.ts",
-    "src/**/*.vue",
-    "types/*.d.ts"
-  ],
-  "exclude": [
-    "node_modules"
+    "src/**/*.vue"
   ]
 }

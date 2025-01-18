@@ -2,7 +2,7 @@
 
 import fs from "fs";
 import path from "path";
-import { exec,execSync } from "child_process";
+import { exec, execSync } from "child_process";
 import { platform } from "os";
 
 // 创建本地 .env.local
@@ -26,7 +26,8 @@ exec(`${command} code`, (error) => {
         `{
   "recommendations": [
     "Vue.volar",
-    "dbaeumer.vscode-eslint"
+    "dbaeumer.vscode-eslint",
+    "EditorConfig.EditorConfig"
   ]
 }`,
         () => {
@@ -53,10 +54,10 @@ exec(`${command} code`, (error) => {
         { id: 'dbaeumer.vscode-eslint', name: 'ESLint' },
       ]
 
-      const installed = Buffer.from(execSync('code --list-extensions'),'utf-8').toString().split(/[\s\n]/)
+      const installed = Buffer.from(execSync('code --list-extensions'), 'utf-8').toString().split(/[\s\n]/)
 
       for (const extension of extensions) {
-        if(installed.indexOf(extension.id) === -1) {
+        if (installed.indexOf(extension.id) === -1) {
           execSync(`code --install-extension ${extension.id}`)
           console.log(`✔ 成功安装 ${extension.name}`)
         } else {
