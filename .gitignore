@@ -1,0 +1,19 @@
+# 过滤所有
+*
+
+# 不过滤的内容
+!public/
+!public/**
+!src/
+!src/**
+!types/
+!types/*
+!.editorconfig
+!.gitattributes
+!.gitignore
+!.npmrc
+!index.html
+!package.json
+!README.md
+!tsconfig.json
+!vite.config.ts
