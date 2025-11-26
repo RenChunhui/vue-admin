@@ -13,7 +13,8 @@ export default defineConfig({
     vue(),
     tailwindcss(),
     Components({
-      resolvers: [RekaResolver()]
+      resolvers: [RekaResolver()],
+      dts: './types/components.d.ts'
     }),
     vueDevTools(),
   ],

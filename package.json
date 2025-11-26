@@ -28,6 +28,7 @@
     "@types/node": "^22.18.11",
     "@vitejs/plugin-vue": "^6.0.1",
     "@vue/tsconfig": "^0.8.1",
+    "dexie": "^4.2.1",
     "msw": "^2.12.2",
     "npm-run-all2": "^8.0.4",
     "tailwindcss": "^4.1.17",

@@ -1,8 +1,8 @@
 import { createApp } from 'vue'
 
 import App from './App.vue'
-import { setupMock } from './mocks/browser'
 import { setupStore } from './stores'
+import { setupMock } from './mocks'
 
 async function bootstrap() {
   const app = createApp(App)
